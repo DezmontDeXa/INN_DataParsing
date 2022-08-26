@@ -1,0 +1,17 @@
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\bin\Debug\net6.0-windows\KommersantParser.deps.json
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\bin\Debug\net6.0-windows\KommersantParser.dll
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\bin\Debug\net6.0-windows\KommersantParser.pdb
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\bin\Debug\net6.0-windows\Shared.dll
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\bin\Debug\net6.0-windows\Shared.pdb
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\obj\Debug\net6.0-windows\KommersantParser.csproj.AssemblyReference.cache
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\obj\Debug\net6.0-windows\KommersantParser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\obj\Debug\net6.0-windows\KommersantParser.AssemblyInfoInputs.cache
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\obj\Debug\net6.0-windows\KommersantParser.AssemblyInfo.cs
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\obj\Debug\net6.0-windows\KommersantParser.csproj.CoreCompileInputs.cache
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\obj\Debug\net6.0-windows\KommersantParser.csproj.CopyComplete
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\obj\Debug\net6.0-windows\KommersantParser.dll
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\obj\Debug\net6.0-windows\refint\KommersantParser.dll
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\obj\Debug\net6.0-windows\KommersantParser.pdb
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\obj\Debug\net6.0-windows\ref\KommersantParser.dll
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\bin\Debug\net6.0-windows\AntiCaptcha_NetCore.dll
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\KommersantParser\bin\Debug\net6.0-windows\AntiCaptcha_NetCore.pdb
