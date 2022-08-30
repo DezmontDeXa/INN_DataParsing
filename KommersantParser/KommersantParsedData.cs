@@ -27,7 +27,7 @@ namespace Kommersant
                 return;
             }
 
-            ActPublishDate = doc.DocumentNode.SelectSingleNode("//h1[@class='article_subheader'")?.InnerText;
+            ActPublishDate = doc.DocumentNode.SelectSingleNode("//h1[@class='article_subheader']")?.InnerText;
 
             foreach (var pseudop in pseudops)
                 Text += pseudop.InnerText + "\r\n";
