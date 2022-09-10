@@ -64,7 +64,7 @@ namespace InnParser
         public IReadOnlyList<string> Inns
         {
             get => inns;
-            private set=> SetProperty(ref inns, new List<string>(value));
+            private set => SetProperty(ref inns, new List<string>(value));
         }
         public ICommand ImportINNsCommand
             => _importINNsCommand ??= new DelegateCommand(ImportINNs);
@@ -88,7 +88,7 @@ namespace InnParser
                 sfd.FileName = "Result.xlsx";
                 sfd.Title = "Сохранение файла результата";
                 sfd.DefaultExt = ".xlsx";
-                if(sfd.ShowDialog() == true)
+                if (sfd.ShowDialog() == true)
                 {
                     _excel.SaveResults(results, sfd.FileName);
                     AppendLog($"Результаты сохранены в файл {sfd.FileName}.");
@@ -100,14 +100,14 @@ namespace InnParser
                 }
                 else
                 {
-                    var result =MessageBox.Show("Результаты парсинга будут утеряны. Продолжить?", "Потеря данных", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                    var result = MessageBox.Show("Результаты парсинга будут утеряны. Продолжить?", "Потеря данных", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
                     if (result == MessageBoxResult.Cancel)
-                        OnFinish(sender, results);                    
+                        OnFinish(sender, results);
                 }
             }
             catch (Exception ex)
             {
-                AppendLog( $"Ошибка при сохранении: {ex}.");
+                AppendLog($"Ошибка при сохранении: {ex}.");
             }
 
             Inns = new List<string>();
@@ -131,8 +131,8 @@ namespace InnParser
             {
                 Inns = _excel.GetINNsFromFile(ofd.FileName);
                 var badInns = Inns.Where(x => x.Length != 12).ToList();
-                Inns = Inns.Except(badInns).ToList();
                 AppendLog($"Загружено {Inns?.Count} ИНН");
+                Inns = Inns.Except(badInns).ToList();
 
                 if (badInns.Count > 0)
                 {
@@ -171,7 +171,7 @@ namespace InnParser
                 _model.Stop();
                 return;
             }
-            if (Inns==null || Inns.Count == 0)
+            if (Inns == null || Inns.Count == 0)
             {
                 AppendLog("Сначала добавить ИНН");
                 return;
