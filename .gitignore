@@ -192,3 +192,5 @@ bin
 obj
 *.bak
 .vs
+.vs/INN_DataParsing/DesignTimeBuild/.dtbcache.v2
+.vs/INN_DataParsing/v17/.suo
