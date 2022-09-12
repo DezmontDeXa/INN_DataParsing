@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fM+aFbt6WpdXckEGsasl3B1JiGAa+92iR4iocDHHvU7bZ5PE0TsPBkm3OysOd1Mi9LODgcLR1D0rLmIm7Ox2Kg==",
+  "dgSpecHash": "R3oB2ZBW8O/5GJ6YKkDCYTvdkfwUc+ij12/knVK3LX1OyWosN/eRt8y1YdiA7rLADsrcYZzUgE/WS5k7NTMnPw==",
   "success": true,
   "projectFilePath": "C:\\Users\\DezmontDeXa\\source\\repos\\LiDev\\INN_DataParsing\\KommersantParser\\KommersantParser.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,10 @@
     "C:\\Users\\DezmontDeXa\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\DezmontDeXa\\.nuget\\packages\\restsharp\\108.0.1\\restsharp.108.0.1.nupkg.sha512",
     "C:\\Users\\DezmontDeXa\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\DezmontDeXa\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512"
+    "C:\\Users\\DezmontDeXa\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
+    "C:\\Users\\DezmontDeXa\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.4\\microsoft.netcore.app.runtime.win-x86.6.0.4.nupkg.sha512",
+    "C:\\Users\\DezmontDeXa\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.4\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.4.nupkg.sha512",
+    "C:\\Users\\DezmontDeXa\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.4\\microsoft.aspnetcore.app.runtime.win-x86.6.0.4.nupkg.sha512"
   ],
   "logs": []
 }

@@ -25,6 +25,8 @@
         public int? ActsCount { get; }
 
         public string? ActPublishDate { get; }
+        public string? CardHTML { get;  }
+        public List<string> Messages { get; }
     }
 
     public class ParsedDataBase : IParsedData
@@ -33,6 +35,7 @@
         public Exception? Exception { get; protected set; }
 
         public string? DocHTML { get; protected set; }
+        public string? CardHTML { get; protected set; }
 
         public bool? IsDebtor { get; protected set; }
 
@@ -71,5 +74,6 @@
 
         public string? ActPublishDate { get; protected set; }
 
+        public List<string> Messages { get; protected set; }
     }
 }

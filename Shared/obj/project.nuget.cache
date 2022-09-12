@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "5YLoVe1kO+Qch5wbb845tKtrC04p+5UMWmMlQLv+wrMGLUJymQ60W6nXEjMvRLynFmXRhVq2Z2JYdvwwf8O85A==",
+  "dgSpecHash": "I3JLsWdq0knOJDUMHHSimrGyznvizzVbA9ndcRY7tD2tToK//o8TzXI/+Z4/sWLnN4F2glnO5OPAo14Zl8bF+w==",
   "success": true,
   "projectFilePath": "C:\\Users\\DezmontDeXa\\source\\repos\\LiDev\\INN_DataParsing\\Shared\\Shared.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\DezmontDeXa\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.4\\microsoft.netcore.app.runtime.win-x86.6.0.4.nupkg.sha512",
+    "C:\\Users\\DezmontDeXa\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.4\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.4.nupkg.sha512",
+    "C:\\Users\\DezmontDeXa\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.4\\microsoft.aspnetcore.app.runtime.win-x86.6.0.4.nupkg.sha512"
+  ],
   "logs": []
 }

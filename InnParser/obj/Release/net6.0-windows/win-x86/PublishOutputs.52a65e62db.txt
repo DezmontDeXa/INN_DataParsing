@@ -525,10 +525,10 @@ C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\In
 C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\Prism.Wpf.dll
 C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\RestSharp.dll
 C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\de\MahApps.Metro.resources.dll
-C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\AntiCaptcha_NetCore.dll
 C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\FedResurs.dll
 C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\KommersantParser.dll
 C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\Shared.dll
+C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\AntiCaptcha_NetCore.dll
 C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\FedResurs.pdb
 C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\KommersantParser.pdb
 C:\Users\DezmontDeXa\source\repos\LiDev\INN_DataParsing\InnParser\bin\Publish\InnParser\Shared.pdb

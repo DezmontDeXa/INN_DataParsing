@@ -49,11 +49,11 @@ namespace FedResurs
                 {
                     var cardId = GetInnCardId(inn);
                     if (cardId == null) return new FedResursInnParseResult(inn);
-                    var docId = GetDocId(cardId);
+                    var cardHtml = GetCardHtml(cardId);
+                    var docId = GetDocIdByAgilityPack(cardHtml);
                     var docHtml = GetDocHTML(docId);
                     ResetSession();
-
-                    return new FedResursInnParseResult(inn, cardId, docId, docHtml, _actsCount);
+                    return new FedResursInnParseResult(inn, cardId, cardHtml, docId, docHtml, _actsCount);
                 }
                 catch (Exception ex)
                 {
@@ -61,6 +61,7 @@ namespace FedResurs
                 }
             }
         }
+
 
         private void ResetSession()
         {
@@ -81,15 +82,65 @@ namespace FedResurs
             return id;
         }
 
-        private string GetDocId(string cardId)
+        private string GetCardHtml(string cardId)
         {
             var response = _restClient.Get(PrivatePersonCardRequest()
                    .AddHeader("Referer", _referer)
                    .AddQueryParameter("ID", cardId)
                    );
             ParsePageData(response);
-            return GetDocIdByAgilityPack(response.Content);
-            //return GetDocIdByRegex(response.Content);
+            return response.Content;
+        }
+
+        //private List<Document> GetDocuments(string cardId, List<Document> prevDocs, int requestedPage)
+        //{
+        //    var response = _restClient.Get(PrivatePersonCardRequest()
+        //           .AddHeader("Referer", _referer)
+        //           .AddQueryParameter("ID", cardId)
+        //           );
+        //    ParsePageData(response);
+        //    int? nextPageId = 0;
+        //    var docs = ParseDocuments(response.Content, out nextPageId);
+        //    if (prevDocs != null)
+        //    {
+        //        prevDocs.AddRange(docs);
+        //        docs = prevDocs;
+        //    }
+        //    if (nextPageId != null)
+        //        return GetDocuments(cardId, docs, nextPageId.Value);
+        //}
+
+        private List<Document> ParseDocuments(string? html, out int? nextPageIndex)
+        {
+            nextPageIndex = null;
+
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(html);
+            var nodes = doc.DocumentNode.SelectNodes("//a[@title[contains(.,'Просмотр сообщения')]]");
+            if (nodes == null) return new List<Document>();
+
+            List<Document> docs = new List<Document>();
+            foreach (var node in nodes)
+            {
+                var href = node.GetAttributeValue("href", "");
+                if (href == null) continue;
+                var id = href.Split("ID=", StringSplitOptions.RemoveEmptyEntries).LastOrDefault();
+                docs.Add(new Document(node.InnerText, id));
+            }
+
+            // pager
+            // 
+            string xpathPart = "//table[@id='ctl00_cphBody_gvMessages']//tr[@class='pager']//";
+            var pageLinks = doc.DocumentNode.SelectNodes($"{xpathPart}span | {xpathPart}a");
+            if (pageLinks != null)
+            {
+                var innerText = pageLinks.SkipWhile(x => x.Name != "span")?.SkipWhile(x => x.Name != "a")?.FirstOrDefault()?.InnerText;
+                if (innerText != null)
+                    if (int.TryParse(innerText, out var pageid))
+                        nextPageIndex = pageid;
+            }
+
+            return docs;
         }
 
         private string GetDocIdByRegex(string content)
@@ -114,9 +165,7 @@ namespace FedResurs
 
             HtmlNode? node = null;
 
-            if(nodes==null) return null;
-
-            if(nodes.Count == 1)
+            if (nodes.Count == 1)
                 node = nodes[0];
             if (nodes.Count > 1)
             {
@@ -134,6 +183,7 @@ namespace FedResurs
 
         private string GetDocHTML(string docId)
         {
+            if (docId == null) return null;
             var response = _restClient.Get(MessageWindowRequest()
                       .AddHeader("Referer", _referer)
                       .AddQueryParameter("ID", docId)
@@ -206,8 +256,8 @@ namespace FedResurs
             doc.LoadHtml(response.Content);
 
             _viewState = doc.DocumentNode.SelectSingleNode("//input[@id='__VIEWSTATE']").GetAttributeValue("value", "");
-            _formUri = doc.DocumentNode.SelectSingleNode("//*[@id='aspnetForm']").GetAttributeValue("action", "").TrimStart("./".ToCharArray()); 
-             _viewStateGenerator = doc.DocumentNode.SelectSingleNode("//input[@id='__VIEWSTATEGENERATOR']").GetAttributeValue("value", "");
+            _formUri = doc.DocumentNode.SelectSingleNode("//*[@id='aspnetForm']").GetAttributeValue("action", "").TrimStart("./".ToCharArray());
+            _viewStateGenerator = doc.DocumentNode.SelectSingleNode("//input[@id='__VIEWSTATEGENERATOR']").GetAttributeValue("value", "");
             _previewPage = doc.DocumentNode.SelectSingleNode("//input[@id='__PREVIOUSPAGE']")?.GetAttributeValue("value", "");
             _referer = response.ResponseUri.ToString();
 

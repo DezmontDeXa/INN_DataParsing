@@ -6,6 +6,12 @@ namespace FedResurs
     public class FedResursInnParseResult : ParsedDataBase
     {
         private const string UrlForAttachedFiles = "https://old.bankrot.fedresurs.ru/";
+
+        public string? CardId { get; }
+        public string? DocId { get; }
+        public string CardLink => $"https://old.bankrot.fedresurs.ru/PrivatePersonCard.aspx?ID={CardId}";
+        public string DocLink => $"https://old.bankrot.fedresurs.ru/MessageWindow.aspx?ID={DocId}";
+
         public FedResursInnParseResult(string inn, Exception ex)
         {
             Inn = inn;
@@ -15,19 +21,23 @@ namespace FedResurs
         {
             Inn = inn;
             IsDebtor = false;
-        }        
-        public FedResursInnParseResult(string inn, string cardId, string docId, string docText, int? _actsCount) : this(inn)
+        }
+        public FedResursInnParseResult(string inn, string cardId, string cardHtml, string docId, string docHtml, int? actsCount) : this(inn)
         {
             CardId = cardId;
+            CardHTML = cardHtml;
             DocId = docId;
-            DocHTML = docText;
+            DocHTML = docHtml;
             IsDebtor = true;
-            ActsCount = _actsCount;
+            ActsCount = actsCount;
 
-            ParseHTML();
+            if(CardHTML!=null)
+                ParseCardHTML();
+            if(DocHTML!=null)
+                ParseDocHTML();
         }
 
-        private void ParseHTML()
+        private void ParseDocHTML()
         {
             try
             {
@@ -62,7 +72,7 @@ namespace FedResurs
                 HTMLParsedSuccessfully = true;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 HtmlParseException = ex;
                 HTMLParsedSuccessfully = false;
@@ -71,15 +81,46 @@ namespace FedResurs
             return;
         }
 
+        private void ParseCardHTML()
+        {
+            try
+            {
+                var doc = new HtmlDocument();
+                doc.LoadHtml(CardHTML);
+                // //td[text()[contains(.,'ФИО')]]/following-sibling::td[1]
+
+                ActPublishDate = doc.DocumentNode.SelectSingleNode("//table[@id='ctl00_cphBody_gvMessages']//tr[2]/td")?.InnerText?.Clear();
+
+                FIO = GetFIOFromCard(doc);
+                Birthday = doc.DocumentNode.SelectSingleNode("//span[@id='ctl00_cphBody_lblBirthdate']")?.InnerText?.Clear();
+                Place = doc.DocumentNode.SelectSingleNode("//span[@id='ctl00_cphBody_lblAddress']")?.InnerText?.Clear();
+                SNILS = doc.DocumentNode.SelectSingleNode("//span[@id='ctl00_cphBody_lblSNILS']")?.InnerText?.Clear();
+                PrevFIO = doc.DocumentNode.SelectSingleNode("//span[@id='ctl00_cphBody_lblNameHistory']")?.InnerText?.Clear();
+
+                Messages = doc.DocumentNode.SelectNodes("//table[@id='ctl00_cphBody_gvMessages']//a[@title='Просмотр сообщения']")?.Select(x => x.InnerText?.Clear())?.ToList();
+
+                HTMLParsedSuccessfully = true;
+            }
+            catch (Exception ex)
+            {
+                HtmlParseException = ex;
+                HTMLParsedSuccessfully = false;
+            }
+
+            return;
+        }
+
+        private string? GetFIOFromCard(HtmlDocument doc)
+        {
+            var lastName = doc.DocumentNode.SelectSingleNode("//span[@id='ctl00_cphBody_lblLastName']")?.InnerText?.Clear();
+            var firstName = doc.DocumentNode.SelectSingleNode("//span[@id='ctl00_cphBody_lblFirstName']")?.InnerText?.Clear();
+            var midleName = doc.DocumentNode.SelectSingleNode("//span[@id='ctl00_cphBody_lblMiddleName']")?.InnerText?.Clear();
+            return $"{lastName} {firstName} {midleName}";
+        }
+
         private string GetXPathForTable(string rowName)
         {
             return $"//td[text()[contains(.,'{rowName}')]]/following-sibling::td[1]";
         }
-
-        public string? CardId { get; }
-        public string? DocId { get; }
-        public string CardLink => $"https://old.bankrot.fedresurs.ru/PrivatePersonCard.aspx?ID={CardId}";
-        public string DocLink => $"https://old.bankrot.fedresurs.ru/MessageWindow.aspx?ID={DocId}";
-
     }
 }

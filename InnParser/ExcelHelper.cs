@@ -43,7 +43,8 @@ namespace InnParser
                 }
                 fields.AddRange(new List<string>()
                     {
-                        result.Data.ActsCount?.ToString() ?? "",
+                        result.Data.Messages.Count.ToString() ?? "",
+                        String.Join("\r\n", result.Data.Messages),
                         result.Data.ActPublishDate ?? "",
                         result.Data.FIO?? "",
                         result.Data.Birthday?? "",
@@ -76,7 +77,8 @@ namespace InnParser
             List<string> headers = new List<string>()
             {
                 "ИНН",
-                "Кол-во сообщений о судебных актах",
+                "Кол-во записей",
+                "Типы сообщений",
                 "Дата публикации",
                 "ФИО должника",
                 "Дата рождения",
