@@ -150,7 +150,7 @@ namespace InnParser
                     }
                     else
                     {
-                        AppendLog($"Загружено {Inns?.Count} ИНН. Из которых {badInns.Count} неверных.");
+                        AppendLog($"Загружено {Inns?.Count} ИНН. А также {badInns.Count} неверных.");
                     }
                 }
 
